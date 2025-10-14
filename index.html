@@ -1,133 +1,315 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>天威情感化动效资源库</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
-      margin: 0;
-      padding: 20px;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>天威诚信UED动效资源库</title>
+<style>
+:root {
+  --brand-color: #D81018;
+  --card-width: 300px;
+  --card-height: 360px;
+  --card-gap: 48px;
+}
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-      max-width: 1920px;
-      margin: 0 auto;
-    }
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  margin: 0;
+  padding: 4vw 3vw;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
 
-    .card {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-      text-align: center;
-      padding: 10px 10px;
-      transition: all 0.2s ease;
-    }
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1vw;
+  flex-wrap: wrap;
+  text-align: center;
+  margin-bottom: 4vw;
+}
+.header img {
+  width: clamp(40px, 8vw, 64px);
+  height: clamp(40px, 8vw, 64px);
+  object-fit: contain;
+}
+h1 {
+  font-size: clamp(20px, 5vw, 36px);
+  color: #222;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.2;
+}
 
-    .card:hover {
-      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
-      transform: translateY(-3px);
-    }
+.content {
+  max-width: calc(4 * var(--card-width) + 3 * var(--card-gap));
+  margin: 0 auto;
+}
 
-    .card img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
+h2 {
+  font-size: clamp(18px, 3.5vw, 26px);
+  color: #333;
+  text-align: left;
+  margin: var(--card-gap) 0 var(--card-gap) 0;
+  padding-left: 12px;
+  border-left: 6px solid var(--brand-color);
+  font-weight: 600;
+}
 
-    .card p {
-      margin: 12px 0 0;
-      color: #656565;
-      font-size: 16px;
-      font-weight: 500;
-    }
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--card-width), 1fr));
+  gap: var(--card-gap);
+  justify-content: center;
+  margin-bottom: var(--card-gap);
+}
 
-    .card span {
-      display: block;
-      margin-top: 6px;
-      font-size: 14px;
-      color: #888;
-    }
-	.title{ font-size: 24px;
-  color: #333333;
-  padding-top: 10px;
-  padding-bottom: 20px;
-  margin: 0 auto;   /* 让块元素本身居中 */
-  text-align: center; /* 文字也居中（可选） */
-  width: fit-content; /* 或者指定一个固定宽度 */}
-  </style>
+.card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  text-align: center;
+  padding: 10px 10px 20px;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: var(--card-width);
+  height: var(--card-height);
+  overflow: hidden;
+  cursor: pointer;
+}
+.card:hover {
+  box-shadow: 0 12px 20px rgba(0,0,0,0.15);
+  transform: translateY(-5px) scale(1.05);
+}
+.card img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 8px;
+}
+.download-btn {
+  display: inline-block;
+  margin-top: 12px;
+  background-color: var(--brand-color);
+  color: #fff;
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: clamp(12px, 2.5vw, 14px);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 2px 4px rgba(216, 16, 24, 0.2);
+}
+.download-btn:hover {
+  background-color: #b90f15;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+  body { padding: 20px 10px; }
+  .grid { gap: 24px; }
+  .card { height: auto; padding: 8px 8px 16px; }
+}
+
+#backToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--brand-color);
+  color: #fff;
+  font-size: 22px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(216, 16, 24, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.2s ease;
+  z-index: 999;
+}
+#backToTop:hover { background-color: #b90f15; transform: translateY(-3px);}
+#backToTop.show { opacity: 1; visibility: visible; }
+
+/* Lightbox 弹窗 */
+#lightbox {
+  position: fixed;
+  top:0; left:0; right:0; bottom:0;
+  background: rgba(0,0,0,0.85);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+#lightbox.show { display: flex; }
+
+#lightbox .lightbox-content {
+  background: #fff;
+  width: 90%;
+  max-width: 700px;
+  height: 80vh;
+  padding: 20px 40px;
+  border-radius: 12px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#lightbox img {
+  max-width: 100%;
+  max-height: calc(100% - 60px);
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+#lightbox .close-btn {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  color: #353535;
+  font-size: 40px;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+#lightbox .download-lightbox {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-block;
+  background-color: var(--brand-color);
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 16px;
+  box-shadow: 0 2px 4px rgba(216,16,24,0.3);
+}
+#lightbox .download-lightbox:hover { background-color: #b90f15; }
+
+#lightbox .nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 50px; /* 更大更醒目 */
+  color: #353535;
+  background: rgba(255,255,255,0.7);
+  border: none;
+  border-radius: 50%;
+  width: 60px; /* 更大 */
+  height: 60px; /* 更大 */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#lightbox .nav-left { left: 10px; }
+#lightbox .nav-right { right: 10px; }
+</style>
 </head>
 <body>
-	<div class="title">天威诚信吉祥物小威品牌化表意动效资源库</div>
-	  <div class="grid">
-	    <div class="card">
-	      <img src="img/恭喜您，提交成功了！.gif" alt="恭喜您，提交成功了！">
-	      <!-- <p>恭喜您，提交成功了！</p> -->
-	    </div>
-		<div class="card">
-		  <img src="img/极速加载中....gif" alt="极速加载中...">
-		  <!-- <p>恭喜您，提交成功了！</p> -->
-		</div>
-		<div class="card">
-		  <img src="img/查无结果.gif" alt="查无结果">
-		  <!-- <p>恭喜您，提交成功了！</p> -->
-		</div>
-	  </div>
-<div class="title">天威诚信UED情感化动效资源库</div>
+
+<div class="header">
+  <img src="img/天威logo.svg" alt="Logo">
+  <h1>天威诚信UED动效资源库</h1>
+</div>
+
+<div class="content">
+  <h2>吉祥物小威品牌化表意类</h2>
   <div class="grid">
-    <div class="card">
-      <img src="img/404.png" alt="404">
-      <!-- <p>404: 未找到访问页面</p> -->
-    </div>
-    <div class="card">
-      <img src="img/502.png" alt="502">
-      <!-- <p>502: 服务器崩溃了</p> -->
-    </div>
-    <div class="card">
-      <img src="img/网络断开.png"网络断开">
-      <!-- <p>网络断开</p> -->
-    </div>
-    <div class="card">
-      <img src="img/暂无权限.png" alt="暂无权限">
-      <!-- <p>暂无权限</p> -->
-    </div>
-    <div class="card">
-      <img src="img/暂无消息.png" alt="暂无消息">
-      <!-- <p>暂无消息</p> -->
-    </div>
-    <div class="card">
-      <img src="img/暂无待办.png" alt="暂无待办">
-      <!-- <p>暂无待办</p> -->
-    </div>
-    <div class="card">
-      <img src="img/暂无订单.png" alt="暂无订单">
-      <!-- <p>暂无订单</p> -->
-    </div>
-    <div class="card">
-      <img src="img/暂无商品.gif" alt="暂无商品">
-      <!-- <p>暂无商品</p> -->
-    </div>
-    <div class="card">
-      <img src="img/暂无文件.gif" alt="暂无文件">
-      <!-- <p>暂无文件</p> -->
-    </div>
-    <div class="card">
-      <img src="img/暂无审批.gif" alt="暂无审批">
-      <!-- <p>暂无审批</p> -->
-    </div>
-    <div class="card">
-      <img src="img/表格内暂无数据.gif" alt="表格内暂无数据">
-     <!-- <p>表格内暂无数据</p> -->
-    </div>
-    <div class="card">
-      <img src="img/暂无数据.gif" alt="暂无数据">
-      <!-- <p>暂无数据</p> -->
-    </div>
+    <div class="card"><img src="img/恭喜您，提交成功了！.gif" alt=""><a class="download-btn" href="img/恭喜您，提交成功了！.gif" download>下载</a></div>
+    <div class="card"><img src="img/极速加载中....gif" alt=""><a class="download-btn" href="img/极速加载中....gif" download>下载</a></div>
+    <div class="card"><img src="img/查无结果.gif" alt=""><a class="download-btn" href="img/查无结果.gif" download>下载</a></div>
+    <div class="card"><img src="img/查询中....gif" alt=""><a class="download-btn" href="img/查询中....gif" download>下载</a></div>
+    <div class="card"><img src="img/欢迎登录！.gif" alt=""><a class="download-btn" href="img/欢迎登录！.gif" download>下载</a></div>
   </div>
+
+  <h2>情感化状态类</h2>
+  <div class="grid">
+    <div class="card"><img src="img/404.png" alt=""><a class="download-btn" href="img/404.png" download>下载</a></div>
+    <div class="card"><img src="img/502.png" alt=""><a class="download-btn" href="img/502.png" download>下载</a></div>
+    <div class="card"><img src="img/网络断开.png" alt=""><a class="download-btn" href="img/网络断开.png" download>下载</a></div>
+    <div class="card"><img src="img/暂无权限.png" alt=""><a class="download-btn" href="img/暂无权限.png" download>下载</a></div>
+    <div class="card"><img src="img/暂无消息.png" alt=""><a class="download-btn" href="img/暂无消息.png" download>下载</a></div>
+    <div class="card"><img src="img/暂无待办.png" alt=""><a class="download-btn" href="img/暂无待办.png" download>下载</a></div>
+    <div class="card"><img src="img/暂无订单.png" alt=""><a class="download-btn" href="img/暂无订单.png" download>下载</a></div>
+    <div class="card"><img src="img/暂无商品.gif" alt=""><a class="download-btn" href="img/暂无商品.gif" download>下载</a></div>
+    <div class="card"><img src="img/暂无文件.gif" alt=""><a class="download-btn" href="img/暂无文件.gif" download>下载</a></div>
+    <div class="card"><img src="img/暂无审批.gif" alt=""><a class="download-btn" href="img/暂无审批.gif" download>下载</a></div>
+    <div class="card"><img src="img/表格内暂无数据.gif" alt=""><a class="download-btn" href="img/表格内暂无数据.gif" download>下载</a></div>
+    <div class="card"><img src="img/暂无数据.gif" alt=""><a class="download-btn" href="img/暂无数据.gif" download>下载</a></div>
+  </div>
+</div>
+
+<div id="backToTop">↑</div>
+
+<div id="lightbox">
+  <div class="lightbox-content">
+    <button class="nav-btn nav-left">❮</button>
+    <button class="nav-btn nav-right">❯</button>
+    <span class="close-btn">✖</span>
+    <img src="" alt="">
+    <a class="download-lightbox" href="" download>下载</a>
+  </div>
+</div>
+
+<script>
+const backToTop = document.getElementById("backToTop");
+window.addEventListener("scroll", () => {
+  if(window.scrollY>300) backToTop.classList.add("show");
+  else backToTop.classList.remove("show");
+});
+backToTop.addEventListener("click", ()=>window.scrollTo({top:0, behavior:'smooth'}));
+
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = lightbox.querySelector('img');
+const downloadBtn = lightbox.querySelector('.download-lightbox');
+const closeBtn = lightbox.querySelector('.close-btn');
+const navLeft = lightbox.querySelector('.nav-left');
+const navRight = lightbox.querySelector('.nav-right');
+const cards = Array.from(document.querySelectorAll('.card img'));
+let currentIndex = 0;
+
+function openLightbox(src){
+  lightbox.classList.add('show');
+  lightboxImg.src = src;
+  downloadBtn.href = src;
+  currentIndex = cards.findIndex(c => c.src===src);
+}
+
+function closeLightbox(){
+  lightbox.classList.remove('show');
+  lightboxImg.src = '';
+}
+
+cards.forEach(img=>img.addEventListener('click', ()=>openLightbox(img.src)));
+closeBtn.addEventListener('click', closeLightbox);
+lightbox.addEventListener('click', e=>{if(e.target===lightbox) closeLightbox();});
+
+navLeft.addEventListener('click', ()=>{ currentIndex=(currentIndex-1+cards.length)%cards.length; openLightbox(cards[currentIndex].src);});
+navRight.addEventListener('click', ()=>{ currentIndex=(currentIndex+1)%cards.length; openLightbox(cards[currentIndex].src);});
+
+document.addEventListener('keydown', e=>{
+  if(lightbox.classList.contains('show')){
+    if(e.key==='ArrowRight') navRight.click();
+    else if(e.key==='ArrowLeft') navLeft.click();
+    else if(e.key==='Escape') closeLightbox();
+  }
+});
+</script>
 </body>
 </html>
