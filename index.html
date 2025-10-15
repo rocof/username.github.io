@@ -97,7 +97,6 @@ h2 {
   border-radius: 6px;
   font-size: clamp(12px, 2.5vw, 14px);
   transition: background-color 0.2s ease, transform 0.2s ease;
-  box-shadow: 0 2px 4px rgba(216, 16, 24, 0.2);
   cursor: pointer;
   border: none;
 }
@@ -170,10 +169,10 @@ h2 {
 }
 #lightbox .close-btn {
   position: absolute;
-  top: 30px;
-  right: 30px;
+  top: 16px;
+  right: 16px;
   color: #353535;
-  font-size: 40px;
+  font-size: clamp(28px, 4vw, 40px);
   font-weight: 400;
   cursor: pointer;
 }
@@ -190,6 +189,8 @@ h2 {
   border-radius: 6px;
   font-size: 16px;
   box-shadow: 0 2px 4px rgba(216,16,24,0.3);
+  cursor: pointer;
+  border: none;
 }
 #lightbox .download-lightbox:hover { background-color: #b90f15; }
 #lightbox .nav-btn {
@@ -210,55 +211,96 @@ h2 {
 }
 #lightbox .nav-left { left: 10px; }
 #lightbox .nav-right { right: 10px; }
-/* 去掉箭头按钮点击时的蓝色边框 */
-.nav-left, .nav-right, .close-btn {
-  outline: none;
-  border: none;
-  -webkit-tap-highlight-color: transparent;
-}
-.download-lightbox {
-  border: none;           /* 去掉边框 */
-  outline: none;          /* 去掉聚焦时的 outline */
-  -webkit-tap-highlight-color: transparent; /* 移动端点击去掉高亮 */
-  cursor: pointer;
-}
+.nav-btn:focus,
+.close-btn:focus,
 .download-lightbox:focus {
   outline: none;
   box-shadow: none;
 }
-
 </style>
 </head>
 <body>
 
 <div class="header">
-  <img src="img/logo.svg" alt="Logo">
+  <img src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/logo.svg" alt="Logo">
   <h1>天威诚信UED动效资源库</h1>
 </div>
 
 <div class="content">
   <h2>吉祥物小威品牌化表意类</h2>
   <div class="grid">
-    <div class="card"><img src="img/successful_submission.gif" alt=""><button class="download-btn" data-src="img/successful_submission.gif">下载</button></div>
-    <div class="card"><img src="img/Loading_speed.gif" alt=""><button class="download-btn" data-src="img/Loading_speed.gif">下载</button></div>
-    <div class="card"><img src="img/No_results.gif" alt=""><button class="download-btn" data-src="img/No_results.gif">下载</button></div>
-    <div class="card"><img src="img/Searching.gif" alt=""><button class="download-btn" data-src="img/Searching.gif">下载</button></div>
-    <div class="card"><img src="img/Welcome_log.gif" alt=""><button class="download-btn" data-src="img/Welcome_log.gif">下载</button></div>
+    <div class="card">
+      <img src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/successful_submission.gif" alt="">
+      <button class="download-btn" data-src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/successful_submission.gif">下载</button>
+    </div>
+    <div class="card">
+      <img src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/Loading_speed.gif" alt="">
+      <button class="download-btn" data-src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/Loading_speed.gif">下载</button>
+    </div>
+    <div class="card">
+      <img src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/No_results.gif" alt="">
+      <button class="download-btn" data-src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/No_results.gif">下载</button>
+    </div>
+    <div class="card">
+      <img src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/Searching.gif" alt="">
+      <button class="download-btn" data-src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/Searching.gif">下载</button>
+    </div>
+    <div class="card">
+      <img src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/Welcome_log.gif" alt="">
+      <button class="download-btn" data-src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/Welcome_log.gif">下载</button>
+    </div>
   </div>
+
   <h2>情感化状态类</h2>
   <div class="grid">
-    <div class="card"><img src="img/404.png" alt=""><button class="download-btn" data-src="img/404.png">下载</button></div>
-    <div class="card"><img src="img/502.png" alt=""><button class="download-btn" data-src="img/502.png">下载</button></div>
-    <div class="card"><img src="img/Network_disconnected.png" alt=""><button class="download-btn" data-src="img/Network_disconnected.png">下载</button></div>
-    <div class="card"><img src="img/No_permission.png" alt=""><button class="download-btn" data-src="img/No_permission.png">下载</button></div>
-    <div class="card"><img src="img/No_news.png" alt=""><button class="download-btn" data-src="img/No_news.png">下载</button></div>
-    <div class="card"><img src="img/No_pending.png" alt=""><button class="download-btn" data-src="img/No_pending.png">下载</button></div>
-    <div class="card"><img src="img/No_orders.png" alt=""><button class="download-btn" data-src="img/No_orders.png">下载</button></div>
-    <div class="card"><img src="img/No_products.gif" alt=""><button class="download-btn" data-src="img/No_products.gif">下载</button></div>
-    <div class="card"><img src="img/No_documents_available.gif" alt=""><button class="download-btn" data-src="img/No_documents_available.gif">下载</button></div>
-    <div class="card"><img src="img/No_review_available.gif" alt=""><button class="download-btn" data-src="img/No_review_available.gif">下载</button></div>
-    <div class="card"><img src="img/No_data_table.gif" alt=""><button class="download-btn" data-src="img/No_data_table.gif">下载</button></div>
-    <div class="card"><img src="img/No_data_available.gif" alt=""><button class="download-btn" data-src="img/No_data_available.gif">下载</button></div>
+    <div class="card">
+      <img src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/404.png" alt="">
+      <button class="download-btn" data-src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/404.png">下载</button>
+    </div>
+    <div class="card">
+      <img src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/502.png" alt="">
+      <button class="download-btn" data-src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/502.png">下载</button>
+    </div>
+    <div class="card">
+      <img src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/Network_disconnected.png" alt="">
+      <button class="download-btn" data-src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/Network_disconnected.png">下载</button>
+    </div>
+    <div class="card">
+      <img src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/No_permission.png" alt="">
+      <button class="download-btn" data-src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/No_permission.png">下载</button>
+    </div>
+    <div class="card">
+      <img src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/No_news.png" alt="">
+      <button class="download-btn" data-src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/No_news.png">下载</button>
+    </div>
+    <div class="card">
+      <img src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/No_pending.png" alt="">
+      <button class="download-btn" data-src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/No_pending.png">下载</button>
+    </div>
+    <div class="card">
+      <img src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/No_orders.png" alt="">
+      <button class="download-btn" data-src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/No_orders.png">下载</button>
+    </div>
+    <div class="card">
+      <img src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/No_products.gif" alt="">
+      <button class="download-btn" data-src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/No_products.gif">下载</button>
+    </div>
+    <div class="card">
+      <img src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/No_documents_available.gif" alt="">
+      <button class="download-btn" data-src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/No_documents_available.gif">下载</button>
+    </div>
+    <div class="card">
+      <img src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/No_review_available.gif" alt="">
+      <button class="download-btn" data-src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/No_review_available.gif">下载</button>
+    </div>
+    <div class="card">
+      <img src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/No_data_table.gif" alt="">
+      <button class="download-btn" data-src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/No_data_table.gif">下载</button>
+    </div>
+    <div class="card">
+      <img src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/No_data_available.gif" alt="">
+      <button class="download-btn" data-src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/No_data_available.gif">下载</button>
+    </div>
   </div>
 </div>
 
@@ -270,7 +312,7 @@ h2 {
     <button class="nav-btn nav-right">❯</button>
     <span class="close-btn">✖</span>
     <img src="" alt="">
-    <button class="download-lightbox">下载</button>
+    <a class="download-lightbox" href="" download>下载</a>
   </div>
 </div>
 
@@ -278,15 +320,14 @@ h2 {
 /* 回到顶部 */
 const backToTop = document.getElementById("backToTop");
 window.addEventListener("scroll", () => {
-  if(window.scrollY>300) backToTop.classList.add("show");
-  else backToTop.classList.remove("show");
+  backToTop.classList.toggle("show", window.scrollY>300);
 });
 backToTop.addEventListener("click", ()=>window.scrollTo({top:0, behavior:'smooth'}));
 
 /* Lightbox */
 const lightbox = document.getElementById('lightbox');
 let lightboxImg = lightbox.querySelector('img');
-const downloadBtnLB = lightbox.querySelector('.download-lightbox');
+const downloadLightbox = lightbox.querySelector('.download-lightbox');
 const closeBtn = lightbox.querySelector('.close-btn');
 const navLeft = lightbox.querySelector('.nav-left');
 const navRight = lightbox.querySelector('.nav-right');
@@ -297,13 +338,9 @@ function openLightbox(src){
   lightbox.classList.add('show');
   const newImg = new Image();
   newImg.src = src;
-  newImg.alt = '';
-  newImg.onload = () => {
-    lightboxImg.replaceWith(newImg);
-    lightboxImg = newImg;
-  };
-  downloadBtnLB.dataset.src = src;
-  currentIndex = cards.findIndex(c => c.src.includes(src));
+  newImg.onload = () => { lightboxImg.replaceWith(newImg); lightboxImg = newImg; };
+  downloadLightbox.href = src;
+  currentIndex = cards.findIndex(c => c.src===src);
 }
 
 function closeLightbox(){
@@ -323,6 +360,7 @@ navRight.addEventListener('click', ()=>{
   currentIndex = (currentIndex + 1) % cards.length;
   openLightbox(cards[currentIndex].src);
 });
+
 document.addEventListener('keydown', e=>{
   if(lightbox.classList.contains('show')){
     if(e.key==='ArrowRight') navRight.click();
@@ -331,7 +369,19 @@ document.addEventListener('keydown', e=>{
   }
 });
 
-/* 自动填充空白卡片 */
+/* 下载按钮强制下载 */
+document.querySelectorAll('.download-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const a = document.createElement('a');
+    a.href = btn.dataset.src;
+    a.download = btn.dataset.src.split('/').pop();
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  });
+});
+
+/* 填充空卡片 */
 function fillEmptyCards(){
   document.querySelectorAll('.grid').forEach(grid => {
     grid.querySelectorAll('.card.empty').forEach(e => e.remove());
@@ -351,29 +401,6 @@ function fillEmptyCards(){
 }
 fillEmptyCards();
 window.addEventListener('resize', fillEmptyCards);
-
-/* 强制下载函数 */
-function forceDownload(url, filename) {
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = filename || url.split('/').pop();
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-}
-
-/* 绑定所有下载按钮 */
-document.querySelectorAll('.download-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const src = btn.dataset.src;
-    forceDownload(src);
-  });
-});
-downloadBtnLB.addEventListener('click', ()=>{
-  const src = downloadBtnLB.dataset.src;
-  forceDownload(src);
-});
 </script>
-
 </body>
 </html>
