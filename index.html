@@ -222,7 +222,7 @@ h2 {
 <body>
 
 <div class="header">
-  <img src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/logo.svg" alt="Logo">
+  <img src="img/logo.svg" alt="Logo">
   <h1>天威诚信UED动效资源库</h1>
 </div>
 
@@ -230,24 +230,24 @@ h2 {
   <h2>吉祥物小威品牌化表意类</h2>
   <div class="grid">
     <div class="card">
-      <img src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/successful_submission.gif" alt="">
-      <button class="download-btn" data-src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/successful_submission.gif">下载</button>
+      <img src="img/successful_submission.gif" alt="">
+      <button class="download-btn" data-src="img/successful_submission.gif">下载</button>
     </div>
     <div class="card">
-      <img src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/Loading_speed.gif" alt="">
-      <button class="download-btn" data-src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/Loading_speed.gif">下载</button>
+      <img src="img/Loading_speed.gif" alt="">
+      <button class="download-btn" data-src="img/Loading_speed.gif">下载</button>
     </div>
     <div class="card">
-      <img src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/No_results.gif" alt="">
-      <button class="download-btn" data-src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/No_results.gif">下载</button>
+      <img src="img/No_results.gif" alt="">
+      <button class="download-btn" data-src="img/No_results.gif">下载</button>
     </div>
     <div class="card">
-      <img src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/Searching.gif" alt="">
-      <button class="download-btn" data-src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/Searching.gif">下载</button>
+      <img src="img/Searching.gif" alt="">
+      <button class="download-btn" data-src="img/Searching.gif">下载</button>
     </div>
     <div class="card">
-      <img src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/Welcome_log.gif" alt="">
-      <button class="download-btn" data-src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/Welcome_log.gif">下载</button>
+      <img src="img/Welcome_log.gif" alt="">
+      <button class="download-btn" data-src="img/Welcome_log.gif">下载</button>
     </div>
   </div>
 
@@ -317,14 +317,31 @@ h2 {
 </div>
 
 <script>
-/* 回到顶部 */
+// 下载按钮强制下载
+document.querySelectorAll('.download-btn').forEach(btn => {
+  btn.addEventListener('click', (event) => {
+    const src = btn.dataset.src;
+    if (src) {
+      const a = document.createElement('a');
+      a.href = src;
+      a.download = src.split('/').pop();  // 设置下载文件名
+      document.body.appendChild(a);  // 将 a 标签添加到页面中
+      a.click();  // 触发下载
+      document.body.removeChild(a);  // 下载后移除 a 标签
+    } else {
+      console.error("下载链接不存在！");
+    }
+  });
+});
+
+// 回到顶部
 const backToTop = document.getElementById("backToTop");
 window.addEventListener("scroll", () => {
-  backToTop.classList.toggle("show", window.scrollY>300);
+  backToTop.classList.toggle("show", window.scrollY > 300);
 });
-backToTop.addEventListener("click", ()=>window.scrollTo({top:0, behavior:'smooth'}));
+backToTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-/* Lightbox */
+// Lightbox 相关代码
 const lightbox = document.getElementById('lightbox');
 let lightboxImg = lightbox.querySelector('img');
 const downloadLightbox = lightbox.querySelector('.download-lightbox');
@@ -334,55 +351,43 @@ const navRight = lightbox.querySelector('.nav-right');
 const cards = Array.from(document.querySelectorAll('.card img'));
 let currentIndex = 0;
 
-function openLightbox(src){
+function openLightbox(src) {
   lightbox.classList.add('show');
   const newImg = new Image();
   newImg.src = src;
   newImg.onload = () => { lightboxImg.replaceWith(newImg); lightboxImg = newImg; };
   downloadLightbox.href = src;
-  currentIndex = cards.findIndex(c => c.src===src);
+  currentIndex = cards.findIndex(c => c.src === src);
 }
 
-function closeLightbox(){
+function closeLightbox() {
   lightbox.classList.remove('show');
   lightboxImg.src = '';
 }
 
-cards.forEach(img=>img.addEventListener('click', ()=>openLightbox(img.src)));
+cards.forEach(img => img.addEventListener('click', () => openLightbox(img.src)));
 closeBtn.addEventListener('click', closeLightbox);
-lightbox.addEventListener('click', e=>{if(e.target===lightbox) closeLightbox();});
+lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
 
-navLeft.addEventListener('click', ()=>{
+navLeft.addEventListener('click', () => {
   currentIndex = (currentIndex - 1 + cards.length) % cards.length;
   openLightbox(cards[currentIndex].src);
 });
-navRight.addEventListener('click', ()=>{
+navRight.addEventListener('click', () => {
   currentIndex = (currentIndex + 1) % cards.length;
   openLightbox(cards[currentIndex].src);
 });
 
-document.addEventListener('keydown', e=>{
-  if(lightbox.classList.contains('show')){
-    if(e.key==='ArrowRight') navRight.click();
-    else if(e.key==='ArrowLeft') navLeft.click();
-    else if(e.key==='Escape') closeLightbox();
+document.addEventListener('keydown', e => {
+  if (lightbox.classList.contains('show')) {
+    if (e.key === 'ArrowRight') navRight.click();
+    else if (e.key === 'ArrowLeft') navLeft.click();
+    else if (e.key === 'Escape') closeLightbox();
   }
 });
 
-/* 下载按钮强制下载 */
-document.querySelectorAll('.download-btn').forEach(btn=>{
-  btn.addEventListener('click', ()=>{
-    const a = document.createElement('a');
-    a.href = btn.dataset.src;
-    a.download = btn.dataset.src.split('/').pop();
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-  });
-});
-
-/* 填充空卡片 */
-function fillEmptyCards(){
+// 填充空卡片
+function fillEmptyCards() {
   document.querySelectorAll('.grid').forEach(grid => {
     grid.querySelectorAll('.card.empty').forEach(e => e.remove());
     const cardWidth = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--card-width'));
@@ -391,7 +396,7 @@ function fillEmptyCards(){
     const columns = Math.floor((gridWidth + cardGap) / (cardWidth + cardGap));
     const emptyNeeded = columns - grid.children.length % columns;
     if (emptyNeeded < columns && emptyNeeded > 0) {
-      for(let i=0;i<emptyNeeded;i++){
+      for (let i = 0; i < emptyNeeded; i++) {
         const emptyCard = document.createElement('div');
         emptyCard.className = 'card empty';
         grid.appendChild(emptyCard);
@@ -402,5 +407,6 @@ function fillEmptyCards(){
 fillEmptyCards();
 window.addEventListener('resize', fillEmptyCards);
 </script>
+
 </body>
 </html>
