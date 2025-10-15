@@ -57,7 +57,7 @@ h2 {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(var(--card-width), 1fr));
   gap: var(--card-gap);
-  justify-content: center;
+  justify-content: start; 
   margin-bottom: var(--card-gap);
 }
 .card {
@@ -102,6 +102,10 @@ h2 {
 .download-btn:hover {
   background-color: #b90f15;
   transform: translateY(-2px);
+}
+.card.empty {
+  visibility: hidden;
+  pointer-events: none;
 }
 @media (max-width: 600px) {
   body { padding: 20px 10px; }
@@ -220,11 +224,11 @@ h2 {
       <img src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/successful_submission.gif" alt="">
       <a class="download-btn" href="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/successful_submission.gif" download>下载</a>
     </div>
-    <div class="card">
+   <div class="card">
       <img src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/Loading_speed.gif" alt="">
       <a class="download-btn" href="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/Loading_speed.gif" download>下载</a>
     </div>
-    <!-- <div class="card">
+<!--    <div class="card">
       <img src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/No_results.gif" alt="">
       <a class="download-btn" href="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/No_results.gif" download>下载</a>
     </div>
@@ -322,10 +326,18 @@ let currentIndex = 0;
 
 function openLightbox(src){
   lightbox.classList.add('show');
-  lightboxImg.src = src;
+  // 创建新的 Image 对象，保证 GIF 从头开始播放
+  const newImg = new Image();
+  newImg.src = src;
+  newImg.alt = '';
+  newImg.onload = () => {
+    lightboxImg.replaceWith(newImg);
+    lightboxImg = newImg; // 更新 lightboxImg 引用
+  };
   downloadBtn.href = src;
   currentIndex = cards.findIndex(c => c.src===src);
 }
+
 
 function closeLightbox(){
   lightbox.classList.remove('show');
@@ -346,6 +358,31 @@ document.addEventListener('keydown', e=>{
     else if(e.key==='Escape') closeLightbox();
   }
 });
+
+// 自动填充空白卡片
+function fillEmptyCards(){
+  document.querySelectorAll('.grid').forEach(grid => {
+    // 移除已有空白卡片
+    grid.querySelectorAll('.card.empty').forEach(e => e.remove());
+    const cardWidth = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--card-width'));
+    const cardGap = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--card-gap'));
+    const gridWidth = grid.clientWidth;
+    const columns = Math.floor((gridWidth + cardGap) / (cardWidth + cardGap));
+    const emptyNeeded = columns - grid.children.length % columns;
+    if (emptyNeeded < columns && emptyNeeded > 0) {
+      for(let i=0;i<emptyNeeded;i++){
+        const emptyCard = document.createElement('div');
+        emptyCard.className = 'card empty';
+        grid.appendChild(emptyCard);
+      }
+    }
+  });
+}
+
+// 初次填充
+fillEmptyCards();
+// 窗口缩放时动态填充
+window.addEventListener('resize', fillEmptyCards);
 </script>
 </body>
 </html>
