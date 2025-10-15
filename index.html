@@ -208,6 +208,23 @@ h2 {
 }
 #lightbox .nav-left { left: 10px; }
 #lightbox .nav-right { right: 10px; }
+/* 去掉箭头按钮点击时的蓝色边框 */
+.nav-left, .nav-right, .close-btn {
+  outline: none;
+  border: none;
+}
+
+/* 去掉点击后（focus 状态）出现的外框 */
+.nav-left:focus, .nav-right:focus, .close-btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+/* 也可补充这一条防止移动端点击闪蓝 */
+.nav-left, .nav-right, .close-btn {
+  -webkit-tap-highlight-color: transparent;
+}
+
 </style>
 </head>
 <body>
@@ -228,7 +245,7 @@ h2 {
       <img src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/Loading_speed.gif" alt="">
       <a class="download-btn" href="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/Loading_speed.gif" download>下载</a>
     </div>
-<!--    <div class="card">
+   <div class="card">
       <img src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/No_results.gif" alt="">
       <a class="download-btn" href="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/No_results.gif" download>下载</a>
     </div>
@@ -239,9 +256,9 @@ h2 {
     <div class="card">
       <img src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/Welcome_log.gif" alt="">
       <a class="download-btn" href="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/Welcome_log.gif" download>下载</a>
-    </div> -->
+    </div>
   </div>
-
+  
   <h2>情感化状态类</h2>
   <div class="grid">
     <div class="card">
@@ -316,7 +333,7 @@ window.addEventListener("scroll", () => {
 backToTop.addEventListener("click", ()=>window.scrollTo({top:0, behavior:'smooth'}));
 
 const lightbox = document.getElementById('lightbox');
-const lightboxImg = lightbox.querySelector('img');
+let lightboxImg = lightbox.querySelector('img'); // ✅ 改为 let
 const downloadBtn = lightbox.querySelector('.download-lightbox');
 const closeBtn = lightbox.querySelector('.close-btn');
 const navLeft = lightbox.querySelector('.nav-left');
@@ -326,18 +343,19 @@ let currentIndex = 0;
 
 function openLightbox(src){
   lightbox.classList.add('show');
-  // 创建新的 Image 对象，保证 GIF 从头开始播放
+
+  // ✅ 创建新的 Image，保证 GIF 从头播放
   const newImg = new Image();
   newImg.src = src;
   newImg.alt = '';
   newImg.onload = () => {
     lightboxImg.replaceWith(newImg);
-    lightboxImg = newImg; // 更新 lightboxImg 引用
+    lightboxImg = newImg; // ✅ 更新引用
   };
+
   downloadBtn.href = src;
   currentIndex = cards.findIndex(c => c.src===src);
 }
-
 
 function closeLightbox(){
   lightbox.classList.remove('show');
@@ -348,8 +366,15 @@ cards.forEach(img=>img.addEventListener('click', ()=>openLightbox(img.src)));
 closeBtn.addEventListener('click', closeLightbox);
 lightbox.addEventListener('click', e=>{if(e.target===lightbox) closeLightbox();});
 
-navLeft.addEventListener('click', ()=>{ currentIndex=(currentIndex-1+cards.length)%cards.length; openLightbox(cards[currentIndex].src);});
-navRight.addEventListener('click', ()=>{ currentIndex=(currentIndex+1)%cards.length; openLightbox(cards[currentIndex].src);});
+navLeft.addEventListener('click', ()=>{
+  currentIndex = (currentIndex - 1 + cards.length) % cards.length;
+  openLightbox(cards[currentIndex].src);
+});
+
+navRight.addEventListener('click', ()=>{
+  currentIndex = (currentIndex + 1) % cards.length;
+  openLightbox(cards[currentIndex].src);
+});
 
 document.addEventListener('keydown', e=>{
   if(lightbox.classList.contains('show')){
@@ -362,7 +387,6 @@ document.addEventListener('keydown', e=>{
 // 自动填充空白卡片
 function fillEmptyCards(){
   document.querySelectorAll('.grid').forEach(grid => {
-    // 移除已有空白卡片
     grid.querySelectorAll('.card.empty').forEach(e => e.remove());
     const cardWidth = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--card-width'));
     const cardGap = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--card-gap'));
@@ -379,9 +403,7 @@ function fillEmptyCards(){
   });
 }
 
-// 初次填充
 fillEmptyCards();
-// 窗口缩放时动态填充
 window.addEventListener('resize', fillEmptyCards);
 </script>
 </body>
