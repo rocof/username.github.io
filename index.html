@@ -15,34 +15,119 @@ body {
   font-family: Arial, sans-serif;
   background: #f5f5f5;
   margin: 0;
-  padding: 4vw 3vw;
+  padding: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
+
+/* Header / Navbar */
 .header {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 1vw;
+  justify-content: space-between;
   flex-wrap: wrap;
-  text-align: center;
-  margin-bottom: 4vw;
+  padding: 10px 4vw;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 999;
 }
-.header img {
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+}
+.header-left img {
   width: clamp(40px, 8vw, 64px);
   height: clamp(40px, 8vw, 64px);
   object-fit: contain;
 }
-h1 {
+.header-left h1 {
   font-size: clamp(20px, 5vw, 36px);
   color: #222;
   font-weight: 700;
   margin: 0;
   line-height: 1.2;
 }
+.header-right {
+  display: flex;
+  gap: 24px;
+}
+.header-right button {
+  background: none;
+  border: none;
+  color: #222;
+  font-size: clamp(14px, 2.5vw, 18px);
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+.header-right button:hover {
+  background-color: rgba(216,16,24,0.1);
+   color: #D81018;
+}
+.header-right button.active {
+  color: #fff;
+  background-color: var(--brand-color);
+}
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  border-top: 1px solid #e5e5e5;
+  padding: 12px 4vw;
+  font-size: 14px;
+  color: #666;
+  box-shadow: 0 -2px 6px rgba(0,0,0,0.05);
+  z-index: 998; /* 比backToTop略低 */
+}
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+.footer-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.footer-logo {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+.footer-right a {
+  color: var(--brand-color);
+  text-decoration: none;
+  margin-left: 12px;
+  transition: color 0.2s ease;
+}
+.footer-right a:hover {
+  color: #b90f15;
+}
+@media (max-width: 600px) {
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 6px;
+  }
+  .footer-right a {
+    margin-left: 0;
+    margin-right: 12px;
+  }
+}
 .content {
   max-width: calc(4 * var(--card-width) + 3 * var(--card-gap));
   margin: 0 auto;
+  padding: 0vw 3vw;
 }
 h2 {
   font-size: clamp(18px, 3.5vw, 26px);
@@ -109,13 +194,14 @@ h2 {
   pointer-events: none;
 }
 @media (max-width: 600px) {
-  body { padding: 20px 10px; }
+  .content { padding: 20px 10px; }
   .grid { gap: 24px; }
   .card { height: auto; padding: 8px 8px 16px; }
+  .header-right { gap: 12px; margin-top: 8px; }
 }
 #backToTop {
   position: fixed;
-  bottom: 30px;
+  bottom: 150px;
   right: 30px;
   width: 48px;
   height: 48px;
@@ -222,12 +308,18 @@ h2 {
 <body>
 
 <div class="header">
-  <img src="img/logo.svg" alt="Logo">
-  <h1>天威诚信UED动效资源库</h1>
+  <div class="header-left">
+    <img src="img/logo.svg" alt="Logo">
+    <h1>天威诚信UED动效资源库</h1>
+  </div>
+  <div class="header-right">
+    <button data-target="吉祥物小威品牌化表意类">小威品牌化类</button>
+    <button data-target="情感化状态类">情感化状态类</button>
+  </div>
 </div>
 
 <div class="content">
-  <h2>吉祥物小威品牌化表意类</h2>
+  <h2 id="吉祥物小威品牌化表意类">吉祥物小威品牌化表意类</h2>
   <div class="grid">
     <div class="card">
       <img src="https://i.postimg.cc/YqXKPdtr/successful-submission.gif" alt="">
@@ -237,21 +329,9 @@ h2 {
       <img src="https://i.postimg.cc/Z5Ctz6qN/Loading-speed.gif" alt="">
       <button class="download-btn" data-src="https://i.postimg.cc/Z5Ctz6qN/Loading-speed.gif">去下载</button>
     </div>
-    <!-- <div class="card">
-      <img src="https://i.postimg.cc/FFP51TwY/No-results.gif" alt="">
-      <button class="download-btn" data-src="https://i.postimg.cc/FFP51TwY/No-results.gif">去下载</button>
-    </div>
-    <div class="card">
-      <img src="https://i.postimg.cc/1z1bb2VW/Searching.gif" alt="">
-      <button class="download-btn" data-src="https://i.postimg.cc/1z1bb2VW/Searching.gif">去下载</button>
-    </div>
-    <div class="card">
-      <img src="https://i.postimg.cc/bNsXnQj2/Welcome-log.gif" alt="">
-      <button class="download-btn" data-src="https://i.postimg.cc/bNsXnQj2/Welcome-log.gif">去下载</button>
-    </div> -->
   </div>
 
-  <h2>情感化状态类</h2>
+  <h2 id="情感化状态类">情感化状态类</h2>
   <div class="grid">
     <div class="card">
       <img src="https://i.postimg.cc/zXYJb6RV/404.png" alt="">
@@ -303,6 +383,18 @@ h2 {
     </div>
   </div>
 </div>
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-left">
+      <img src="img/logo.svg" alt="Logo" class="footer-logo">
+      <span>天威诚信UED动效资源库 © 2025</span>
+    </div>
+    <div class="footer-right">
+      <a href="http://www.itrus.com.cn/" target="_blank">天威诚信官网</a>
+      <a href="http://192.168.100.230:8003/newued/#/resource"target="_blank">天威诚信UED&前端规范</a>
+    </div>
+  </div>
+</footer>
 
 <div id="backToTop">↑</div>
 
@@ -319,17 +411,15 @@ h2 {
 <script>
 // 下载按钮强制下载
 document.querySelectorAll('.download-btn').forEach(btn => {
-  btn.addEventListener('click', (event) => {
+  btn.addEventListener('click', () => {
     const src = btn.dataset.src;
     if (src) {
       const a = document.createElement('a');
       a.href = src;
-      a.download = src.split('/').pop();  // 设置下载文件名
-      document.body.appendChild(a);  // 将 a 标签添加到页面中
-      a.click();  // 触发下载
-      document.body.removeChild(a);  // 下载后移除 a 标签
-    } else {
-      console.error("下载链接不存在！");
+      a.download = src.split('/').pop();
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
     }
   });
 });
@@ -341,7 +431,7 @@ window.addEventListener("scroll", () => {
 });
 backToTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-// Lightbox 相关代码
+// Lightbox
 const lightbox = document.getElementById('lightbox');
 let lightboxImg = lightbox.querySelector('img');
 const downloadLightbox = lightbox.querySelector('.download-lightbox');
@@ -406,6 +496,42 @@ function fillEmptyCards() {
 }
 fillEmptyCards();
 window.addEventListener('resize', fillEmptyCards);
+
+// 导航滚动 + 高亮
+const navButtons = document.querySelectorAll('.header-right button');
+const header = document.querySelector('.header');
+const sections = document.querySelectorAll('h2');
+
+navButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const targetEl = document.getElementById(btn.dataset.target);
+    if (targetEl) {
+      const headerHeight = header.offsetHeight;
+      const topPos = targetEl.offsetTop - headerHeight - 48;
+      window.scrollTo({ top: topPos, behavior: 'smooth' });
+
+      // 点击时立即更新高亮
+      navButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+  });
+});
+
+function updateActiveNav() {
+  const scrollPos = window.scrollY + header.offsetHeight + 50; // 容差50px
+  sections.forEach((sec, i) => {
+    if (scrollPos >= sec.offsetTop && scrollPos < sec.offsetTop + sec.offsetHeight) {
+      navButtons.forEach(btn => btn.classList.remove('active'));
+      navButtons[i].classList.add('active');
+    }
+  });
+}
+window.addEventListener('scroll', updateActiveNav);
+updateActiveNav();
+
+// 默认高亮第一个菜单
+navButtons.forEach(b => b.classList.remove('active'));
+if(navButtons.length > 0) navButtons[0].classList.add('active');
 </script>
 
 </body>
