@@ -97,6 +97,7 @@ h2 {
   border-radius: 6px;
   font-size: clamp(12px, 2.5vw, 14px);
   transition: background-color 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 2px 4px rgba(216, 16, 24, 0.2);
   cursor: pointer;
   border: none;
 }
@@ -169,10 +170,10 @@ h2 {
 }
 #lightbox .close-btn {
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: 30px;
+  right: 30px;
   color: #353535;
-  font-size: clamp(28px, 4vw, 40px);
+  font-size: 40px;
   font-weight: 400;
   cursor: pointer;
 }
@@ -189,8 +190,10 @@ h2 {
   border-radius: 6px;
   font-size: 16px;
   box-shadow: 0 2px 4px rgba(216,16,24,0.3);
-  cursor: pointer;
   border: none;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
 }
 #lightbox .download-lightbox:hover { background-color: #b90f15; }
 #lightbox .nav-btn {
@@ -211,96 +214,43 @@ h2 {
 }
 #lightbox .nav-left { left: 10px; }
 #lightbox .nav-right { right: 10px; }
-.nav-btn:focus,
-.close-btn:focus,
-.download-lightbox:focus {
+.nav-left, .nav-right, .close-btn {
   outline: none;
-  box-shadow: none;
+  border: none;
+  -webkit-tap-highlight-color: transparent;
 }
 </style>
 </head>
 <body>
 
 <div class="header">
-  <img src="img/logo.svg" alt="Logo">
+  <img src="https://cdn.jsdelivr.net/gh/rocof/username.github.io@main/img/logo.svg" alt="Logo">
   <h1>天威诚信UED动效资源库</h1>
 </div>
 
 <div class="content">
   <h2>吉祥物小威品牌化表意类</h2>
   <div class="grid">
-    <div class="card">
-      <img src="https://i.postimg.cc/vHysHnp4/successful-submission.gif" alt="">
-      <button class="download-btn" data-src="https://i.postimg.cc/vHysHnp4/successful-submission.gif">去下载</button>
-    </div>
-    <div class="card">
-      <img src="https://i.postimg.cc/Vsnw8gZh/Loading-speed.gif" alt="">
-      <button class="download-btn" data-src="https://i.postimg.cc/Vsnw8gZh/Loading-speed.gif">去下载</button>
-    </div>
-    <div class="card">
-      <img src="https://i.postimg.cc/MKwSKBhB/No-results.gif" alt="">
-      <button class="download-btn" data-src="https://i.postimg.cc/MKwSKBhB/No-results.gif">去下载</button>
-    </div>
-    <div class="card">
-      <img src="https://i.postimg.cc/RVTz3FBw/Searching.gif" alt="">
-      <button class="download-btn" data-src="https://i.postimg.cc/RVTz3FBw/Searching.gif">去下载</button>
-    </div>
-    <div class="card">
-      <img src="https://i.postimg.cc/VLFcS68q/Welcome-log.gif" alt="">
-      <button class="download-btn" data-src="https://i.postimg.cc/VLFcS68q/Welcome-log.gif">去下载</button>
-    </div>
+    <div class="card"><img src="img/successful_submission.gif" alt=""><button class="download-btn" data-src="img/successful_submission.gif">下载</button></div>
+    <div class="card"><img src="img/Loading_speed.gif" alt=""><button class="download-btn" data-src="img/Loading_speed.gif">下载</button></div>
+    <div class="card"><img src="img/No_results.gif" alt=""><button class="download-btn" data-src="img/No_results.gif">下载</button></div>
+    <div class="card"><img src="img/Searching.gif" alt=""><button class="download-btn" data-src="img/Searching.gif">下载</button></div>
+    <div class="card"><img src="img/Welcome_log.gif" alt=""><button class="download-btn" data-src="img/Welcome_log.gif">下载</button></div>
   </div>
-
   <h2>情感化状态类</h2>
   <div class="grid">
-    <div class="card">
-      <img src="https://i.postimg.cc/zXYJb6RV/404.png" alt="">
-      <button class="download-btn" data-src="https://i.postimg.cc/zXYJb6RV/404.png">去下载</button>
-    </div>
-    <div class="card">
-      <img src="https://i.postimg.cc/FR2hxnWc/502.png" alt="">
-      <button class="download-btn" data-src="https://i.postimg.cc/FR2hxnWc/502.png">去下载</button>
-    </div>
-    <div class="card">
-      <img src="https://i.postimg.cc/7ZxwXzVM/Network-disconnected.png" alt="">
-      <button class="download-btn" data-src="https://i.postimg.cc/7ZxwXzVM/Network-disconnected.png">去下载</button>
-    </div>
-    <div class="card">
-      <img src="https://i.postimg.cc/J0NC57Bt/No-permission.png" alt="">
-      <button class="download-btn" data-src="https://i.postimg.cc/J0NC57Bt/No-permission.png">去下载</button>
-    </div>
-    <div class="card">
-      <img src="https://i.postimg.cc/6qrxf6GJ/No-news.png" alt="">
-      <button class="download-btn" data-src="https://i.postimg.cc/6qrxf6GJ/No-news.png">去下载</button>
-    </div>
-    <div class="card">
-      <img src="https://i.postimg.cc/GtFnx3st/No-pending.png" alt="">
-      <button class="download-btn" data-src="https://i.postimg.cc/GtFnx3st/No-pending.png">去下载</button>
-    </div>
-    <div class="card">
-      <img src="https://i.postimg.cc/rs12NytM/No-orders.png" alt="">
-      <button class="download-btn" data-src="https://i.postimg.cc/rs12NytM/No-orders.png">下载</button>
-    </div>
-    <div class="card">
-      <img src="https://i.postimg.cc/KcBb2fsx/No-products.gif" alt="">
-      <button class="download-btn" data-src="https://i.postimg.cc/KcBb2fsx/No-products.gif">去下载</button>
-    </div>
-    <div class="card">
-      <img src="https://i.postimg.cc/Xqf6kNyn/No-documents-available.gif" alt="">
-      <button class="download-btn" data-src="https://i.postimg.cc/Xqf6kNyn/No-documents-available.gif">去下载</button>
-    </div>
-    <div class="card">
-      <img src="https://i.postimg.cc/wxLzp24P/No-review-available.gif" alt="">
-      <button class="download-btn" data-src="https://i.postimg.cc/wxLzp24P/No-review-available.gif">去下载</button>
-    </div>
-    <div class="card">
-      <img src="https://i.postimg.cc/tgcbXMjp/No-data-table.gif" alt="">
-      <button class="download-btn" data-src="https://i.postimg.cc/tgcbXMjp/No-data-table.gif">去下载</button>
-    </div>
-    <div class="card">
-      <img src="https://i.postimg.cc/HnDCM8nb/No-data-available.gif" alt="">
-      <button class="download-btn" data-src="https://i.postimg.cc/HnDCM8nb/No-data-available.gif">去下载</button>
-    </div>
+    <div class="card"><img src="img/404.png" alt=""><button class="download-btn" data-src="img/404.png">下载</button></div>
+    <div class="card"><img src="img/502.png" alt=""><button class="download-btn" data-src="img/502.png">下载</button></div>
+    <div class="card"><img src="img/Network_disconnected.png" alt=""><button class="download-btn" data-src="img/Network_disconnected.png">下载</button></div>
+    <div class="card"><img src="img/No_permission.png" alt=""><button class="download-btn" data-src="img/No_permission.png">下载</button></div>
+    <div class="card"><img src="img/No_news.png" alt=""><button class="download-btn" data-src="img/No_news.png">下载</button></div>
+    <div class="card"><img src="img/No_pending.png" alt=""><button class="download-btn" data-src="img/No_pending.png">下载</button></div>
+    <div class="card"><img src="img/No_orders.png" alt=""><button class="download-btn" data-src="img/No_orders.png">下载</button></div>
+    <div class="card"><img src="img/No_products.gif" alt=""><button class="download-btn" data-src="img/No_products.gif">下载</button></div>
+    <div class="card"><img src="img/No_documents_available.gif" alt=""><button class="download-btn" data-src="img/No_documents_available.gif">下载</button></div>
+    <div class="card"><img src="img/No_review_available.gif" alt=""><button class="download-btn" data-src="img/No_review_available.gif">下载</button></div>
+    <div class="card"><img src="img/No_data_table.gif" alt=""><button class="download-btn" data-src="img/No_data_table.gif">下载</button></div>
+    <div class="card"><img src="img/No_data_available.gif" alt=""><button class="download-btn" data-src="img/No_data_available.gif">下载</button></div>
   </div>
 </div>
 
@@ -312,82 +262,69 @@ h2 {
     <button class="nav-btn nav-right">❯</button>
     <span class="close-btn">✖</span>
     <img src="" alt="">
-    <a class="download-lightbox" href="" download>去下载</a>
+    <button class="download-lightbox">下载</button>
   </div>
 </div>
 
 <script>
-// 下载按钮强制下载
-document.querySelectorAll('.download-btn').forEach(btn => {
-  btn.addEventListener('click', (event) => {
-    const src = btn.dataset.src;
-    if (src) {
-      const a = document.createElement('a');
-      a.href = src;
-      a.download = src.split('/').pop();  // 设置下载文件名
-      document.body.appendChild(a);  // 将 a 标签添加到页面中
-      a.click();  // 触发下载
-      document.body.removeChild(a);  // 下载后移除 a 标签
-    } else {
-      console.error("下载链接不存在！");
-    }
-  });
-});
-
-// 回到顶部
+/* 回到顶部 */
 const backToTop = document.getElementById("backToTop");
 window.addEventListener("scroll", () => {
-  backToTop.classList.toggle("show", window.scrollY > 300);
+  if(window.scrollY>300) backToTop.classList.add("show");
+  else backToTop.classList.remove("show");
 });
-backToTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+backToTop.addEventListener("click", ()=>window.scrollTo({top:0, behavior:'smooth'}));
 
-// Lightbox 相关代码
+/* Lightbox */
 const lightbox = document.getElementById('lightbox');
 let lightboxImg = lightbox.querySelector('img');
-const downloadLightbox = lightbox.querySelector('.download-lightbox');
+const downloadBtnLB = lightbox.querySelector('.download-lightbox');
 const closeBtn = lightbox.querySelector('.close-btn');
 const navLeft = lightbox.querySelector('.nav-left');
 const navRight = lightbox.querySelector('.nav-right');
 const cards = Array.from(document.querySelectorAll('.card img'));
 let currentIndex = 0;
 
-function openLightbox(src) {
+function openLightbox(src){
   lightbox.classList.add('show');
   const newImg = new Image();
   newImg.src = src;
-  newImg.onload = () => { lightboxImg.replaceWith(newImg); lightboxImg = newImg; };
-  downloadLightbox.href = src;
-  currentIndex = cards.findIndex(c => c.src === src);
+  newImg.alt = '';
+  newImg.onload = () => {
+    lightboxImg.replaceWith(newImg);
+    lightboxImg = newImg;
+  };
+  downloadBtnLB.dataset.src = src;
+  currentIndex = cards.findIndex(c => c.src.includes(src));
 }
 
-function closeLightbox() {
+function closeLightbox(){
   lightbox.classList.remove('show');
   lightboxImg.src = '';
 }
 
-cards.forEach(img => img.addEventListener('click', () => openLightbox(img.src)));
+cards.forEach(img=>img.addEventListener('click', ()=>openLightbox(img.src)));
 closeBtn.addEventListener('click', closeLightbox);
-lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+lightbox.addEventListener('click', e=>{if(e.target===lightbox) closeLightbox();});
 
-navLeft.addEventListener('click', () => {
+navLeft.addEventListener('click', ()=>{
   currentIndex = (currentIndex - 1 + cards.length) % cards.length;
   openLightbox(cards[currentIndex].src);
 });
-navRight.addEventListener('click', () => {
+navRight.addEventListener('click', ()=>{
   currentIndex = (currentIndex + 1) % cards.length;
   openLightbox(cards[currentIndex].src);
 });
-
-document.addEventListener('keydown', e => {
-  if (lightbox.classList.contains('show')) {
-    if (e.key === 'ArrowRight') navRight.click();
-    else if (e.key === 'ArrowLeft') navLeft.click();
-    else if (e.key === 'Escape') closeLightbox();
+document.addEventListener('keydown', e=>{
+  if(lightbox.classList.contains('show')){
+    if(e.key==='ArrowRight') navRight.click();
+    else if(e.key==='ArrowLeft') navLeft.click();
+    else if(e.key==='Escape') closeLightbox();
   }
 });
 
-// 填充空卡片
-function fillEmptyCards() {
+/* 自动填充空白卡片 */
+function fillEmptyCards(){
   document.querySelectorAll('.grid').forEach(grid => {
     grid.querySelectorAll('.card.empty').forEach(e => e.remove());
     const cardWidth = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--card-width'));
@@ -396,7 +333,7 @@ function fillEmptyCards() {
     const columns = Math.floor((gridWidth + cardGap) / (cardWidth + cardGap));
     const emptyNeeded = columns - grid.children.length % columns;
     if (emptyNeeded < columns && emptyNeeded > 0) {
-      for (let i = 0; i < emptyNeeded; i++) {
+      for(let i=0;i<emptyNeeded;i++){
         const emptyCard = document.createElement('div');
         emptyCard.className = 'card empty';
         grid.appendChild(emptyCard);
@@ -406,6 +343,28 @@ function fillEmptyCards() {
 }
 fillEmptyCards();
 window.addEventListener('resize', fillEmptyCards);
+
+/* 强制下载函数 */
+function forceDownload(url, filename) {
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename || url.split('/').pop();
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+
+/* 绑定所有下载按钮 */
+document.querySelectorAll('.download-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const src = btn.dataset.src;
+    forceDownload(src);
+  });
+});
+downloadBtnLB.addEventListener('click', ()=>{
+  const src = downloadBtnLB.dataset.src;
+  forceDownload(src);
+});
 </script>
 
 </body>
