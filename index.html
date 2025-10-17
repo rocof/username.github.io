@@ -63,24 +63,24 @@ body {
 #searchBox {
   width: 60%;
   max-width: 400px;
-  padding: 6px 12px;
-  font-size: 14px;
+  min-width: 200px; /* 最小宽度 */
+  padding: 12px 12px 12px 42px; /* 左侧留出图标空间 */
+  font-size: 16px;
   border-radius: 6px;
   border: 1px solid #ccc;
   outline: none;
   transition: all 0.2s ease;
+  background: url('https://cdn-icons-png.flaticon.com/512/622/622669.png') no-repeat 16px center;
+  background-size: 16px 16px;
 }
 #searchBox:focus {
   border-color: var(--brand-color);
   box-shadow: 0 0 6px rgba(216,16,24,0.3);
 }
 @media (max-width: 600px) {
-  .header-center {
-    width: 100%;
-    margin: 8px 0;
-  }
   #searchBox {
     width: 90%;
+    min-width: 150px;
   }
 }
 
