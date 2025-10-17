@@ -54,6 +54,36 @@ body {
   margin: 0;
   line-height: 1.2;
 }
+.header-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: 8px 12px;
+}
+#searchBox {
+  width: 60%;
+  max-width: 400px;
+  padding: 6px 12px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: all 0.2s ease;
+}
+#searchBox:focus {
+  border-color: var(--brand-color);
+  box-shadow: 0 0 6px rgba(216,16,24,0.3);
+}
+@media (max-width: 600px) {
+  .header-center {
+    width: 100%;
+    margin: 8px 0;
+  }
+  #searchBox {
+    width: 90%;
+  }
+}
+
 .header-right {
   display: flex;
   gap: 24px;
@@ -377,6 +407,9 @@ h2 {
     <img src="img/logo.svg" alt="Logo">
     <h1>天威诚信UED动效资源库</h1>
   </div>
+   <div class="header-center">
+      <input type="text" id="searchBox" placeholder="搜索动效..." />
+    </div>
   <div class="header-right">
     <button data-target="吉祥物小威品牌化表意类">小威品牌化类</button>
     <button data-target="情感化状态类">情感化状态类</button>
@@ -387,11 +420,11 @@ h2 {
   <h2 id="吉祥物小威品牌化表意类">吉祥物小威品牌化表意类</h2>
   <div class="grid">
     <div class="card">
-      <img src="https://i.postimg.cc/YqXKPdtr/successful-submission.gif" alt="">
+      <img src="https://i.postimg.cc/YqXKPdtr/successful-submission.gif" alt="恭喜您,提交成功了" loading="lazy">
       <button class="download-btn" data-src="https://i.postimg.cc/YqXKPdtr/successful-submission.gif">去下载</button>
     </div>
     <div class="card">
-      <img src="https://i.postimg.cc/Z5Ctz6qN/Loading-speed.gif" alt="">
+      <img src="https://i.postimg.cc/Z5Ctz6qN/Loading-speed.gif" alt="极速加载中" loading="lazy">
       <button class="download-btn" data-src="https://i.postimg.cc/Z5Ctz6qN/Loading-speed.gif">去下载</button>
     </div>
   </div>
@@ -399,51 +432,51 @@ h2 {
   <h2 id="情感化状态类">情感化状态类</h2>
   <div class="grid">
     <div class="card">
-      <img src="https://i.postimg.cc/zXYJb6RV/404.png" alt="">
+      <img src="https://i.postimg.cc/zXYJb6RV/404.png" alt="404:未找到访问页面" loading="lazy">
       <button class="download-btn" data-src="https://i.postimg.cc/zXYJb6RV/404.png">去下载</button>
     </div>
     <div class="card">
-      <img src="https://i.postimg.cc/FR2hxnWc/502.png" alt="">
+      <img src="https://i.postimg.cc/FR2hxnWc/502.png" alt="502:服务器崩了" loading="lazy">
       <button class="download-btn" data-src="https://i.postimg.cc/FR2hxnWc/502.png">去下载</button>
     </div>
     <div class="card">
-      <img src="https://i.postimg.cc/7ZxwXzVM/Network-disconnected.png" alt="">
+      <img src="https://i.postimg.cc/7ZxwXzVM/Network-disconnected.png" alt="网络断开" loading="lazy">
       <button class="download-btn" data-src="https://i.postimg.cc/7ZxwXzVM/Network-disconnected.png">去下载</button>
     </div>
     <div class="card">
-      <img src="https://i.postimg.cc/J0NC57Bt/No-permission.png" alt="">
+      <img src="https://i.postimg.cc/J0NC57Bt/No-permission.png" alt="暂无权限" loading="lazy">
       <button class="download-btn" data-src="https://i.postimg.cc/J0NC57Bt/No-permission.png">去下载</button>
     </div>
     <div class="card">
-      <img src="https://i.postimg.cc/6qrxf6GJ/No-news.png" alt="">
+      <img src="https://i.postimg.cc/6qrxf6GJ/No-news.png" alt="暂无消息" loading="lazy">
       <button class="download-btn" data-src="https://i.postimg.cc/6qrxf6GJ/No-news.png">去下载</button>
     </div>
     <div class="card">
-      <img src="https://i.postimg.cc/GtFnx3st/No-pending.png" alt="">
+      <img src="https://i.postimg.cc/GtFnx3st/No-pending.png" alt="暂无待办" loading="lazy">
       <button class="download-btn" data-src="https://i.postimg.cc/GtFnx3st/No-pending.png">去下载</button>
     </div>
     <div class="card">
-      <img src="https://i.postimg.cc/rs12NytM/No-orders.png" alt="">
+      <img src="https://i.postimg.cc/rs12NytM/No-orders.png" alt="暂无订单" loading="lazy">
       <button class="download-btn" data-src="https://i.postimg.cc/rs12NytM/No-orders.png">下载</button>
     </div>
     <div class="card">
-      <img src="https://i.postimg.cc/KcBb2fsx/No-products.gif" alt="">
+      <img src="https://i.postimg.cc/KcBb2fsx/No-products.gif" alt="暂无商品" loading="lazy">
       <button class="download-btn" data-src="https://i.postimg.cc/KcBb2fsx/No-products.gif">去下载</button>
     </div>
     <div class="card">
-      <img src="https://i.postimg.cc/Xqf6kNyn/No-documents-available.gif" alt="">
+      <img src="https://i.postimg.cc/Xqf6kNyn/No-documents-available.gif" alt="暂无文件" loading="lazy">
       <button class="download-btn" data-src="https://i.postimg.cc/Xqf6kNyn/No-documents-available.gif">去下载</button>
     </div>
     <div class="card">
-      <img src="https://i.postimg.cc/wxLzp24P/No-review-available.gif" alt="">
+      <img src="https://i.postimg.cc/wxLzp24P/No-review-available.gif" alt="暂无审批" loading="lazy">
       <button class="download-btn" data-src="https://i.postimg.cc/wxLzp24P/No-review-available.gif">去下载</button>
     </div>
     <div class="card">
-      <img src="https://i.postimg.cc/tgcbXMjp/No-data-table.gif" alt="">
+      <img src="https://i.postimg.cc/tgcbXMjp/No-data-table.gif" alt="表格内暂无数据" loading="lazy">
       <button class="download-btn" data-src="https://i.postimg.cc/tgcbXMjp/No-data-table.gif">去下载</button>
     </div>
     <div class="card">
-      <img src="https://i.postimg.cc/HnDCM8nb/No-data-available.gif" alt="">
+      <img src="https://i.postimg.cc/HnDCM8nb/No-data-available.gif" alt="暂无数据" loading="lazy">
       <button class="download-btn" data-src="https://i.postimg.cc/HnDCM8nb/No-data-available.gif">去下载</button>
     </div>
   </div>
@@ -487,6 +520,40 @@ h2 {
 </div>
 
 <script>
+// 搜索框
+const searchBox = document.getElementById('searchBox');
+const allSections = Array.from(document.querySelectorAll('.content > h2'));
+
+searchBox.addEventListener('input', () => {
+  const query = searchBox.value.trim().toLowerCase();
+
+  allSections.forEach(section => {
+    const grid = section.nextElementSibling;
+    let hasMatch = false;
+
+    Array.from(grid.children).forEach(card => {
+      const imgAlt = card.querySelector('img')?.alt.toLowerCase() || '';
+      if (imgAlt.includes(query)) {
+        card.style.display = 'flex';
+        hasMatch = true;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    // 如果分类下没有匹配，隐藏标题和 grid
+    if (hasMatch) {
+      section.style.display = 'block';
+      grid.style.display = 'grid';
+    } else {
+      section.style.display = 'none';
+      grid.style.display = 'none';
+    }
+  });
+});
+
+
+	
 // 下载按钮强制下载
 document.querySelectorAll('.download-btn').forEach(btn => {
   btn.addEventListener('click', () => {
